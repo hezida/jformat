@@ -1,21 +1,29 @@
 package org.hd.jformat;
 
-//import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
+/**
+ * This is the main logging class...
+ * bla bla, this is some more docs...
+ * 
+ * @author hezi
+ *
+ */
 public class LoggingUtility {
 	
-	//private static final String SEMICOLON = " ;; ";
-	private static final String START = "["; //$NON-NLS-1$ 
-	private static final String END = "]"; //$NON-NLS-1$ 
 
+	/**
+	 * This is the main method to use. Just give it an object and a stream and it will
+	 * dump the object to the stream
+	 * @param value the object to dump
+	 * @param s the stream to dump to
+	 */
 	public static void dumptoStream(Object value,PrintStream s) {
 		LoggingUtility.dumptoStream(null,value, s, 0, 10);
 	}
-	public static void dumptoStream(String name,Object value,PrintStream s,int depth,int limit)
+	private static void dumptoStream(String name,Object value,PrintStream s,int depth,int limit)
 	{
 		// end the recursion (safety)...
 		if(depth==limit) {
@@ -80,75 +88,4 @@ public class LoggingUtility {
 		}
 		*/
 	}
-
-	public static String toString(Object value)
-	{
-		return removeWrappingMarks(Arrays.deepToString(new Object[]{value}), START, END);
-	}
-
-	public static char nl() 
-	{
-		return '\n';
-	}
-
-	public static String removeWrappingMarks(String string, String start, String end) {
-        if (string == null) {
-              return "[NULL]";
-        }
-
-        if (string.startsWith(start)) {
-              string = string.substring(start.length());
-        }
-
-        if (string.endsWith(end)) {
-              string = string.substring(0, string.length() - end.length());
-        }
-
-        return string;
-  }
-    
-    public static String printValue (String name, Object[] array)
-    {
-    	return (array == null ? (name + " == null !!!") : (name + ".length = " + array.length));
-    }
-    
-    static class Car {
-    	public int licensePlate;
-    	public Car(int licensePlate) {
-    		this.licensePlate=licensePlate;
-    	}
-    }
-    
-    static class Person {
-    	public Person(int age,String name) {
-    		this.age=age;
-    		this.name=name;
-    		this.cars=null;
-    	}
-    	public int age;
-    	public String name;
-    	public Car[] cars;
-    	public void addCar(Car c) {
-    		if(this.cars==null) {
-    			this.cars=new Car[1];
-    			this.cars[0]=c;
-    		} else {
-    			Car[] newcars=new Car[this.cars.length+1];
-    			for(int i=0;i<this.cars.length;i++) {
-    				newcars[i]=cars[i];
-    			}
-    			newcars[this.cars.length]=c;
-    			this.cars=newcars;
-    		}
-    	}
-    }
-    
-    public static void main(String[] args) {
-    	Person p=new Person(324,"sadfads");
-    	Car c1=new Car(3245243);
-    	Car c2=new Car(4564365);
-    	p.addCar(c1);
-    	p.addCar(c2);
-    	LoggingUtility.dumptoStream(p, System.out);
-    }
 }
