@@ -1,6 +1,6 @@
 package org.hd.jformat;
 
-import java.io.OutputStream;
+//import java.io.OutputStream;
 import java.io.PrintStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class LoggingUtility {
 	
-	private static final String SEMICOLON = " ;; ";
+	//private static final String SEMICOLON = " ;; ";
 	private static final String START = "["; //$NON-NLS-1$ 
 	private static final String END = "]"; //$NON-NLS-1$ 
 
