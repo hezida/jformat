@@ -1,0 +1,3 @@
+- write some javadoc in source files and see that it comes out ok in the javadocs.
+- separate the classes neatly.
+- prepare website for the project with javadoc and jar to download on it.

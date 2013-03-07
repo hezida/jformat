@@ -27,14 +27,13 @@
 		</javac>
 	</target>
 
-	<target name="jar" depends="compile" description="build the jar file">
+	<target name="jar" description="build the jar file" depends="compile">
 		<mkdir dir="${bin}/dist"/>
-		<jar destfile="${bin}/dist/${jarfile}">
-			<classes dir="${bin}/classes"/>
+		<jar destfile="${bin}/dist/${jarfile}" basedir="${bin}/classes">
 		</jar>
 	</target>
 
-	<target name="test" description="test the package">
+	<target name="test" description="test the package" depends="jar">
 		<!--junit printsummary="yes" haltonfailure="yes" showoutput="yes">
 			<classpath>
 				<dirset dir="${classes}/classes"></dirset>
@@ -49,5 +48,10 @@
 				</fileset>
 			</batchtest>
 		</junit-->
+	</target>
+
+	<target name="javadoc" description="generate the javadocs">
+		<javadoc destdir="${bin}/javadoc" author="true" version="true" use="true" windowtitle="JFormat API" sourcepath="src">
+		</javadoc>
 	</target>
 </project>
