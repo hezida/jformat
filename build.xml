@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE project>
+
+<project name="jformat" default="main" basedir=".">
+	<!-- properties -->
+	<property name="src" location="src"/>
+	<property name="bin" location="bin"/>
+	<property name="jarfile" value="jformat.jar"/>
+	<!-- end of properties -->
+	
+	<target name="main" description="this is the main target" depends="test">
+	</target>
+
+	<target name="clean" description="clean the project">
+		<delete dir="${bin}" verbose="true"/>
+	</target>
+
+	<target name="compile" description="compile the source files" depends="clean">
+		<mkdir dir="${bin}/classes"/>
+		<javac srcdir="${src}" destdir="${bin}/classes" includeantruntime="false">
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile" description="build the jar file">
+		<mkdir dir="${bin}/dist"/>
+		<jar destfile="${bin}/dist/${jarfile}">
+			<classes dir="${bin}/classes"/>
+		</jar>
+	</target>
+
+	<target name="test" description="test the package">
+		<!--junit printsummary="yes" haltonfailure="yes" showoutput="yes">
+			<classpath>
+				<dirset dir="${classes}/classes"></dirset>
+				<fileset dir="lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+			<batchtest fork="yes" todir="${reports.tests}">
+				<fileset dir="src/">
+					<include name="**/*Test*.java"/>
+					<exclude name="**/AllTests.java"/>
+				</fileset>
+			</batchtest>
+		</junit-->
+	</target>
+</project>
