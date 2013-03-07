@@ -7,6 +7,10 @@ WEBROOT:=/var/www/jformat
 ###########
 # Targets #
 ###########
+.PHONY: all
+all:
+	$(info what do you want me to do?)
+
 .PHONY: install
 install:
 	ant

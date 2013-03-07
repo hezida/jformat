@@ -1,3 +1,5 @@
+- add example of using the project in the website with
+	syntax highlighting.
 - add real junit tests to the project and use them in ant.
 	see that all tests pass.
 - add real usage examples on the website.
