@@ -1,1 +1,3 @@
 - prepare website for the project with javadoc and jar to download on it.
+- add real junit tests to the project and use them in ant.
+	see that all tests pass.
