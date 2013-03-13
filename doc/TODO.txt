@@ -1,3 +1,8 @@
+- add features to the actual code:
+	option to only print certain members.
+	print private vars.
+	max recursion level.
+	see that indentation is OK.
 - add example of using the project in the website with
 	syntax highlighting.
 - add real junit tests to the project and use them in ant.
