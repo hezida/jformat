@@ -1,7 +1,9 @@
 package org.hd.jformat.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hd.jformat.LoggingUtility;
 
@@ -14,6 +16,19 @@ public class MainTest {
 	    	}
 	    }
 	    
+	  public static class Person3 {
+	    	public Person3(int age,String name) {
+	    		this.age=age;
+	    		this.name=name;
+	    		this.cars=new HashMap<String,Car>();
+	    	}
+	    	public int age;
+	    	public String name;
+	    	public Map<String,Car> cars;
+	    	public void addCar(String name,Car c) {
+	    		this.cars.put(name, c);
+	    	}
+	    }
 	  public static class Person2 {
 	    	public Person2(int age,String name) {
 	    		this.age=age;
@@ -54,14 +69,21 @@ public class MainTest {
 	    public static void main(String[] args) {
 	    	Car c1=new Car(3245243);
 	    	Car c2=new Car(4564365);
+
 	    	Person p1=new Person(1,"first person name");
 	    	p1.addCar(c1);
 	    	p1.addCar(c2);
+	    	LoggingUtility.dumptoStream(p1, System.out);
+
 	    	Person2 p2=new Person2(2,"second person name");
 	    	p2.addCar(c1);
 	    	p2.addCar(c2);
-	    	LoggingUtility.dumptoStream(p1, System.out);
 	    	LoggingUtility.dumptoStream(p2, System.out);
+
+	    	Person3 p3=new Person3(3,"third person name");
+	    	p3.addCar("mycar",c1);
+	    	p3.addCar("my wifes car",c2);
+	    	LoggingUtility.dumptoStream(p3, System.out);
 	    }
 
 }

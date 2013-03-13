@@ -2,7 +2,7 @@
 # Parameters #
 ##############
 WEBROOT:=/var/www/jformat
-PEM:=~/downloads/hezidaniel.pem
+PEM:=../hezidaniel.pem
 REMOTE_MACHINE:=root@ec2-46-137-133-209.eu-west-1.compute.amazonaws.com
 
 

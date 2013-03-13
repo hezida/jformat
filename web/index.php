@@ -26,6 +26,9 @@
 		want to be able to control the depth of the dump? The fields to dump?
 		This is what JFormat is for...</p>
 
+		<h2>News...</h2>
+		<p>Collections printing is now supported! (17/3/13)</p>
+
 		<h2>Can I see an example? Sure. Here it is...</h2>
 		<p>
 			<pre class="brush: java">

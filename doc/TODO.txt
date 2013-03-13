@@ -1,5 +1,4 @@
 - add features to the actual code:
-	- handle maps.
 - add example of using the project in the website with
 	syntax highlighting.
 - add real junit tests to the project and use them in ant.

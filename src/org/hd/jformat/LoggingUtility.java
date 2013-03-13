@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -45,7 +46,7 @@ public class LoggingUtility {
 		default_rules.dumpPrimitives=true;
 		default_rules.dumpArrays=true;
 		default_rules.dumpCollections=true;
-		default_rules.maxCollectionItemsToPrint=1;
+		default_rules.maxCollectionItemsToPrint=20;
 		default_rules.printClasses=false;
 		default_rules.recurseLevel=4;
 		
@@ -123,6 +124,28 @@ public class LoggingUtility {
 				int i=0;
 				for(Object x:col) {
 		            LoggingUtility.dumptoStream("element "+i,x,s,depth+1,cip,rules);
+		            cip++;
+		            if(cip>=rules.maxCollectionItemsToPrint) {
+						LoggingUtility.printTabs(depth, s);
+						s.println("(more data missing...)");
+		            	return;
+		            }
+		            i++;
+				}
+			}
+			return;
+		}
+		if (value instanceof Map<?,?>) {
+			if(rules.dumpCollections) {
+				Map<?,?> map=(Map<?,?>)value;
+				LoggingUtility.printTabs(depth, s);
+				s.println(name+": "+value.getClass().getSimpleName()+": "+map.size()+":");
+				int i=0;
+				for (Map.Entry<?, ?> entry : map.entrySet()) {
+				    Object key =entry.getKey();
+				    Object val=entry.getValue();
+		            LoggingUtility.dumptoStream("key "+i,key,s,depth+1,cip,rules);
+		            LoggingUtility.dumptoStream("val "+i,val,s,depth+1,cip,rules);
 		            cip++;
 		            if(cip>=rules.maxCollectionItemsToPrint) {
 						LoggingUtility.printTabs(depth, s);
