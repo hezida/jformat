@@ -1,17 +1,33 @@
 package org.hd.jformat.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hd.jformat.LoggingUtility;
 
 public class MainTest {
 
-	  static class Car {
+	  public static class Car {
 	    	public int licensePlate;
 	    	public Car(int licensePlate) {
 	    		this.licensePlate=licensePlate;
 	    	}
 	    }
 	    
-	    static class Person {
+	  public static class Person2 {
+	    	public Person2(int age,String name) {
+	    		this.age=age;
+	    		this.name=name;
+	    		this.cars=new ArrayList<Car>();
+	    	}
+	    	public int age;
+	    	public String name;
+	    	public List<Car> cars;
+	    	public void addCar(Car c) {
+	    		this.cars.add(c);
+	    	}
+	    }
+	  public static class Person {
 	    	public Person(int age,String name) {
 	    		this.age=age;
 	    		this.name=name;
@@ -36,12 +52,16 @@ public class MainTest {
 	    }
 	    
 	    public static void main(String[] args) {
-	    	Person p=new Person(324,"sadfads");
 	    	Car c1=new Car(3245243);
 	    	Car c2=new Car(4564365);
-	    	p.addCar(c1);
-	    	p.addCar(c2);
-	    	LoggingUtility.dumptoStream(p, System.out);
+	    	Person p1=new Person(1,"first person name");
+	    	p1.addCar(c1);
+	    	p1.addCar(c2);
+	    	Person2 p2=new Person2(2,"second person name");
+	    	p2.addCar(c1);
+	    	p2.addCar(c2);
+	    	LoggingUtility.dumptoStream(p1, System.out);
+	    	LoggingUtility.dumptoStream(p2, System.out);
 	    }
 
 }
