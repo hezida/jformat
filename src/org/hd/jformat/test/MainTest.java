@@ -1,5 +1,7 @@
 package org.hd.jformat.test;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,23 +69,35 @@ public class MainTest {
 	    }
 	    
 	    public static void main(String[] args) {
+	    	PrintWriter pw=new PrintWriter(System.out,true);
+
 	    	Car c1=new Car(3245243);
 	    	Car c2=new Car(4564365);
 
 	    	Person p1=new Person(1,"first person name");
 	    	p1.addCar(c1);
 	    	p1.addCar(c2);
-	    	LoggingUtility.dumptoStream(p1, System.out);
+	    	LoggingUtility.dumptoStream(p1, pw);
 
 	    	Person2 p2=new Person2(2,"second person name");
 	    	p2.addCar(c1);
 	    	p2.addCar(c2);
-	    	LoggingUtility.dumptoStream(p2, System.out);
+	    	LoggingUtility.dumptoStream(p2, pw);
 
 	    	Person3 p3=new Person3(3,"third person name");
 	    	p3.addCar("mycar",c1);
 	    	p3.addCar("my wifes car",c2);
-	    	LoggingUtility.dumptoStream(p3, System.out);
+	    	LoggingUtility.dumptoStream(p3, pw);
+
+	    	Person3 p4=new Person3(4,"fourth person name");
+	    	p4.addCar("mycar",c1);
+	    	p4.addCar("my wifes car",c2);
+	    	
+	    	StringWriter sw=new StringWriter();
+	    	PrintWriter pw2=new PrintWriter(sw);
+	    	LoggingUtility.dumptoStream(p4, pw2);
+	    	StringBuffer sb=sw.getBuffer();
+	    	System.out.println(sb.toString());
 	    }
 
 }

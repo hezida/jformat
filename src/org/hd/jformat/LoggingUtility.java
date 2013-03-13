@@ -1,6 +1,6 @@
 package org.hd.jformat;
 
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -72,17 +72,17 @@ public class LoggingUtility {
 	 * @param s
 	 * @param members
 	 */
-	public static void dumptoStream(Object value,PrintStream s) {
+	public static void dumptoStream(Object value,PrintWriter s) {
 		LoggingUtility.dumptoStream(null,value, s, 0, 0, LoggingUtility.default_rules);
 	}
-	public static void dumptoStream(Object value,PrintStream s,DumpingRules rules) {
+	public static void dumptoStream(Object value,PrintWriter s,DumpingRules rules) {
 		LoggingUtility.dumptoStream(null,value, s, 0, 0, rules);
 	}
-	private static void printTabs(int depth,PrintStream s) {
+	private static void printTabs(int depth,PrintWriter s) {
 		for(int i=0;i<depth;i++)
 			s.print("\t");
 	}
-	private static void dumptoStream(String name,Object value,PrintStream s,int depth,int cip,DumpingRules rules)
+	private static void dumptoStream(String name,Object value,PrintWriter s,int depth,int cip,DumpingRules rules)
 	{
 		if(depth==rules.recurseLevel) {
 			return;
