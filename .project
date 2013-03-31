@@ -18,12 +18,12 @@
 		<link>
 			<name>classes</name>
 			<type>2</type>
-			<location>/home/mark/links/hezidaniel/jformat/bin/classes</location>
+			<location>/home/hezi/git/jformat/bin/classes</location>
 		</link>
 		<link>
 			<name>src</name>
 			<type>2</type>
-			<location>/home/mark/links/hezidaniel/jformat/src</location>
+			<location>/home/hezi/git/jformat/src</location>
 		</link>
 	</linkedResources>
 </projectDescription>
