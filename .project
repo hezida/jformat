@@ -14,16 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>classes</name>
-			<type>2</type>
-			<location>/home/hezi/git/jformat/bin/classes</location>
-		</link>
-		<link>
-			<name>src</name>
-			<type>2</type>
-			<location>/home/hezi/git/jformat/src</location>
-		</link>
-	</linkedResources>
 </projectDescription>
