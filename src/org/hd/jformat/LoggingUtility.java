@@ -1,5 +1,6 @@
 package org.hd.jformat;
 
+import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -72,6 +73,12 @@ public class LoggingUtility {
 	 * @param s
 	 * @param members
 	 */
+	public static String convert(Object value) {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		PrintWriter pw = new PrintWriter(baos);
+		dumptoStream(value, pw);
+		return baos.toString();
+	}
 	public static void dumptoStream(Object value,PrintWriter s) {
 		LoggingUtility.dumptoStream(null,value, s, 0, 0, LoggingUtility.default_rules);
 	}

@@ -98,6 +98,8 @@ public class MainTest {
 	    	LoggingUtility.dumptoStream(p4, pw2);
 	    	StringBuffer sb=sw.getBuffer();
 	    	System.out.println(sb.toString());
+	    	
+	    	System.out.println(LoggingUtility.convert(p3));
 	    }
 
 }
