@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class LoggingUtility {
 	 */
 	static {
 		default_rules=new DumpingRules();
-		default_rules.dumpPrivates=false;
+		default_rules.dumpPrivates=true;
 		default_rules.dumpPublic=true;
 		default_rules.dumpPrimitives=true;
 		default_rules.dumpArrays=true;
@@ -172,9 +173,16 @@ public class LoggingUtility {
 			s.println(name+": "+value.getClass().getSimpleName()+":");			
 		}
 		
-		for(Field f:value.getClass().getFields()) {
+		for(Field f:value.getClass().getDeclaredFields()) {
 			try {
-				LoggingUtility.dumptoStream(f.getName(),f.get(value),s,depth+1,cip,rules);
+				//System.out.println("field name is "+f.getName());
+				//System.out.println("field is private: "+Modifier.isPrivate(f.getModifiers()));
+				if(!Modifier.isPrivate(f.getModifiers()) || rules.dumpPrivates) {
+					if(Modifier.isPrivate(f.getModifiers())) {
+						f.setAccessible(true);
+					}
+					LoggingUtility.dumptoStream(f.getName(),f.get(value),s,depth+1,cip,rules);
+				}
 			} catch (IllegalArgumentException e) {
 				throw new RuntimeException(e);
 			} catch (IllegalAccessException e) {

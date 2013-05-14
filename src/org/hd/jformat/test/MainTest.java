@@ -24,9 +24,15 @@ public class MainTest {
 	    		this.name=name;
 	    		this.cars=new HashMap<String,Car>();
 	    	}
-	    	public int age;
-	    	public String name;
-	    	public Map<String,Car> cars;
+	    	private int age;
+	    	private String name;
+	    	private Map<String,Car> cars;
+	    	public int getAge() {
+	    		return age;
+	    	}
+	    	public String getName() {
+	    		return name;
+	    	}
 	    	public void addCar(String name,Car c) {
 	    		this.cars.put(name, c);
 	    	}
@@ -37,22 +43,37 @@ public class MainTest {
 	    		this.name=name;
 	    		this.cars=new ArrayList<Car>();
 	    	}
-	    	public int age;
-	    	public String name;
-	    	public List<Car> cars;
+	    	private int age;
+	    	public int getAge() {
+	    		return age;
+	    	}
+	    	private String name;
+	    	public String getName() {
+	    		return name;
+	    	}
+	    	private List<Car> cars;
+	    	public List<Car> getcars() {
+	    		return cars;
+	    	}
 	    	public void addCar(Car c) {
 	    		this.cars.add(c);
 	    	}
-	    }
+	  }
 	  public static class Person {
 	    	public Person(int age,String name) {
 	    		this.age=age;
 	    		this.name=name;
 	    		this.cars=null;
 	    	}
-	    	public int age;
-	    	public String name;
-	    	public Car[] cars;
+	    	private int age;
+	    	private String name;
+	    	private Car[] cars;
+	    	public int getAge() {
+	    		return age;
+	    	}
+	    	public String getName() {
+	    		return name;
+	    	}
 	    	public void addCar(Car c) {
 	    		if(this.cars==null) {
 	    			this.cars=new Car[1];
